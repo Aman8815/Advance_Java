@@ -11,7 +11,7 @@ public class TestConnectionCreate {
 		
 		// step 1 load Driver
 		
-		Class.forName("com.mysql.cj.jdbc.Driver");
+	Class.forName("com.mysql.cj.jdbc.Driver");
 		
 		String url = "jbdc:mysql://localhost:3306/advance";
 		String uName = "root";
