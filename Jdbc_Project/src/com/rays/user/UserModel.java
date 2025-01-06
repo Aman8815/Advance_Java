@@ -48,7 +48,12 @@ public class UserModel {
 		
 		// step 2 Create connection
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", uName, pass);
+		UserBean Exist = FindByLoginId(bean.getLoginId());
 		
+		if(Exist !=null) {
+			System.out.println("LoginId Al Ready Exist");
+		}
+		else {
 		//  step 3 create statement
 		  PreparedStatement  pstmt = con.prepareStatement("insert into  st_user values(?,?,?,?,?,?,?)");
 		  
@@ -63,7 +68,7 @@ public class UserModel {
 		    pstmt.executeUpdate();
 		    
 		    System.out.println("data addedd sucess");
-		
+		}
 	}
 	
 	public void update(UserBean bean) throws Exception {
@@ -145,6 +150,37 @@ Class.forName("com.mysql.cj.jdbc.Driver");
 		
 		return list;
 		
+		
+	}
+	
+	public UserBean FindByLoginId(String LoginId) throws Exception {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+		String uName = "root";
+		String pass = "root";
+          
+		
+		// step 2 Create connection
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", uName, pass);
+		
+		  PreparedStatement  pstmt = con.prepareStatement("select * from st_user where loginid = ?");
+		    pstmt.setString(1,LoginId);
+		  
+		  ResultSet rs =  pstmt.executeQuery();
+		     
+		    
+		    
+             UserBean bean = null;
+		    
+		    while(rs.next()) {
+		    	bean = new UserBean();
+		    	bean.setId(rs.getInt(1));
+		    	bean.setFirstName(rs.getString(2));
+		    	bean.setLastName(rs.getString(3));
+		    }
+		
+		
+		
+		return bean;
 		
 	}
 	

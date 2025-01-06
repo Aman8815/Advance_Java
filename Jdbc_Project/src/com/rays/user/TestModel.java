@@ -89,12 +89,11 @@ public class TestModel {
 		UserModel model = new UserModel();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Scanner sc = new Scanner(System.in);
-		//System.out.println("Enter the firstname");
+		
 		
 
-		bean.setFirstName("uday");
-		bean.setLastName("dabi");
+		bean.setFirstName("aman");
+		bean.setLastName("yashona");
 		bean.setLoginId("uday@gamil.com");
 		bean.setPassword("uday123");
 		bean.setAddress("indore");

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class TestMarksheet {
+public class TestMarksheetLike {
 	
 	public static void main(String[] args) throws Exception {
 	Class.forName("com.mysql.cj.jdbc.Driver");
@@ -18,8 +18,7 @@ public class TestMarksheet {
 		// step 2 Create connection
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/result", uName, pass);
 		
-	   PreparedStatement pstmt =  con.prepareStatement(" select * ,(physics+chemestry+maths) as total,((physics+chemestry+maths)/3) as percentage from marksheet order by  total desc limit 5;");
-	   
+	   PreparedStatement pstmt =  con.prepareStatement("select * from marksheet where name like '%a'");
 	      ResultSet rs  =  pstmt.executeQuery();
 	      
 	      while(rs.next()) {
