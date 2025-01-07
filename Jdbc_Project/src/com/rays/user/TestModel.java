@@ -1,7 +1,6 @@
 package com.rays.user;
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -43,10 +42,13 @@ public class TestModel {
 
 	private static void testSerch() throws Exception {
 		UserBean bean = new UserBean();
-
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		UserModel model = new UserModel();
-
-		List list = model.search();
+		//bean.setFirstName("aman");
+        //  bean.setLastName("dabi");
+		
+	bean.setDob(sdf.parse("2022-02-02"));
+		List list = model.search(bean);
 
 		Iterator it = list.iterator();
 		while (it.hasNext()) {
@@ -94,7 +96,7 @@ public class TestModel {
 
 		bean.setFirstName("aman");
 		bean.setLastName("yashona");
-		bean.setLoginId("uday@gamil.com");
+		bean.setLoginId("uday123@gamil.com");
 		bean.setPassword("uday123");
 		bean.setAddress("indore");
 		bean.setDob(sdf.parse("2022-02-02"));
